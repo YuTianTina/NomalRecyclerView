@@ -7,11 +7,10 @@ import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 
 /**
- * Created by 二更 on 2016/7/18.
+ * Created by Tina on 2016/7/18.
  * 线性布局分割线
  */
 public class DividerItemDecoration extends RecyclerView.ItemDecoration {

@@ -2,7 +2,6 @@ package yutiantian.nomalrecyclerview.ui;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -16,6 +15,7 @@ import butterknife.ButterKnife;
 import yutiantian.nomalrecyclerview.R;
 import yutiantian.nomalrecyclerview.adapter.MainAdapter;
 import yutiantian.nomalrecyclerview.utils.BaseRecyclerAdapter;
+import yutiantian.nomalrecyclerview.utils.DividerItemDecoration;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,7 +35,8 @@ public class MainActivity extends AppCompatActivity {
     private void init() {
         LinearLayoutManager llm=new LinearLayoutManager(this);
         rvList.setLayoutManager(llm);
-        rvList.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
+//        rvList.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
+        rvList.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL_LIST,R.drawable.divider));
         mAdapter=new MainAdapter(this,rvList,R.layout.layout_recycler_item,mList);
         rvList.setAdapter(mAdapter);
         mAdapter.setmOnLoadMoreListener(new BaseRecyclerAdapter.OnLoadMoreListener() {
