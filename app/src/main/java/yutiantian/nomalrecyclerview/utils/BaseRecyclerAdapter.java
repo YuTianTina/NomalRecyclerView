@@ -111,6 +111,8 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<ViewHo
         if(holder.getItemViewType()==NORMAL_TYPE){
             convert(holder,position);
         }
+        if(holder.getItemViewType()==LOAD_MORE_TYPE)
+            holder.setVisible(R.id.load_more_progressBar,true);
     }
 
     protected abstract void convert(ViewHolder holder, int position);
