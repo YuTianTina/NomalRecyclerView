@@ -14,8 +14,8 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import yutiantian.nomalrecyclerview.R;
+import yutiantian.nomalrecyclerview.adapter.MainAdapter;
 import yutiantian.nomalrecyclerview.utils.BaseRecyclerAdapter;
-import yutiantian.nomalrecyclerview.utils.ViewHolder;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,12 +36,7 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager llm=new LinearLayoutManager(this);
         rvList.setLayoutManager(llm);
         rvList.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
-        mAdapter=new BaseRecyclerAdapter(this, rvList, R.layout.layout_recycler_item, mList, new BaseRecyclerAdapter.OnBingHoldViewListener() {
-            @Override
-            public void bindHoldView(ViewHolder holder, int position) {
-                holder.setText(R.id.tv_right,mList.get(position));
-            }
-        });
+        mAdapter=new MainAdapter(this,rvList,R.layout.layout_recycler_item,mList);
         rvList.setAdapter(mAdapter);
         mAdapter.setmOnLoadMoreListener(new BaseRecyclerAdapter.OnLoadMoreListener() {
             @Override

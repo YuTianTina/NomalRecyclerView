@@ -13,9 +13,9 @@ import yutiantian.nomalrecyclerview.R;
 /**
  * Created by Tina on 2016/9/14.
  */
-public  class BaseRecyclerAdapter extends RecyclerView.Adapter<ViewHolder> {
+public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<ViewHolder> {
     protected Context mContext;
-    protected List<?> mLists;
+    protected List<T> mLists;
     protected RecyclerView mRecyclerView;
     private OnLoadMoreListener mOnLoadMoreListener;
 //    private  LayoutInflater inflater;
@@ -35,20 +35,15 @@ public  class BaseRecyclerAdapter extends RecyclerView.Adapter<ViewHolder> {
         this.row=20;
         hasMore=false;
     }
-
     protected void addPage(){
         this.curPage++;
     }
-    public interface OnBingHoldViewListener{
-        void bindHoldView(ViewHolder holder, int position);
-    }
-    protected OnBingHoldViewListener mOnBingHoldViewListener;
-    public BaseRecyclerAdapter(Context context, RecyclerView recyclerView, int layoutID, List<?> list, OnBingHoldViewListener onBingHoldViewListener){
+
+    public BaseRecyclerAdapter(Context context, RecyclerView recyclerView, int layoutID, List<T> list){
         mContext=context;
         mRecyclerView=recyclerView;
         mLists=list;
         mLayoutID=layoutID;
-        mOnBingHoldViewListener=onBingHoldViewListener;
         final LinearLayoutManager linearLayoutManager= (LinearLayoutManager) recyclerView.getLayoutManager();
         if(linearLayoutManager instanceof LinearLayoutManager){//线性布局下的recyclerview滚动分页
             recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -114,10 +109,12 @@ public  class BaseRecyclerAdapter extends RecyclerView.Adapter<ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         if(holder.getItemViewType()==NORMAL_TYPE){
-            if(mOnBingHoldViewListener!=null)
-                mOnBingHoldViewListener.bindHoldView(holder,position);
+            convert(holder,position);
         }
     }
+
+    protected abstract void convert(ViewHolder holder, int position);
+
 
     @Override
     public int getItemViewType(int position) {
