@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         rvList.setLayoutManager(llm);
 //        rvList.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
         rvList.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL_LIST,R.drawable.divider));
-        mAdapter=new MainAdapter(this,rvList,R.layout.layout_recycler_item,mList);
+        mAdapter=new MainAdapter(this,rvList,mList);
         rvList.setAdapter(mAdapter);
         mAdapter.setmOnLoadMoreListener(new BaseRecyclerAdapter.OnLoadMoreListener() {
             @Override

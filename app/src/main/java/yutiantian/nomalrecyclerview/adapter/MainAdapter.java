@@ -16,8 +16,8 @@ import yutiantian.nomalrecyclerview.utils.ViewHolder;
 
 public class MainAdapter extends BaseRecyclerAdapter<String> {
 
-    public MainAdapter(Context context, RecyclerView recyclerView, int layoutID, List<String> list) {
-        super(context, recyclerView, layoutID, list);
+    public MainAdapter(Context context, RecyclerView recyclerView, List<String> list) {
+        super(context, recyclerView, R.layout.layout_recycler_item, list);
     }
 
     @Override
